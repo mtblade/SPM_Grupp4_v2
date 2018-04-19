@@ -27,8 +27,24 @@ GameObject:
   - component: {fileID: 50619812934605400}
   - component: {fileID: 232941521578638268}
   - component: {fileID: 120734066699541570}
+  - component: {fileID: 114308367887815812}
   m_Layer: 0
   m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1693229633356500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4890113038618882}
+  m_Layer: 0
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,6 +78,19 @@ Transform:
   m_Father: {fileID: 4902417108679106}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4890113038618882
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693229633356500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4902417108679106}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4902417108679106
 Transform:
   m_ObjectHideFlags: 1
@@ -73,6 +102,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4399171885885378}
+  - {fileID: 4890113038618882}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,7 +222,11 @@ MonoBehaviour:
     Max: 45
   MaxWallAngleDelta: 40
   RespawnTimer: 2
+<<<<<<< HEAD
 --- !u!114 &114877060886089652
+=======
+--- !u!114 &114308367887815812
+>>>>>>> 04f17ea31e805619d5236688d7db40cfb6fad230
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -203,11 +237,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25825eaeff227d74a8a7369865eea2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   Player: {fileID: 0}
   RespawnPosition: {x: 0, y: 0, z: 0}
   LingerOnDeath: 0
   CameraDelay: 0
   RespawnTimer: 0
+=======
+  Player: {fileID: 114287766970145604}
+  RespawnPosition: {x: 0, y: 0, z: 0}
+  LingerOnDeath: 2
+  CameraDelay: 1.5
+  RespawnTimer: 1
+>>>>>>> 04f17ea31e805619d5236688d7db40cfb6fad230
   Camera: {fileID: 0}
   DeathZoom: 0
 --- !u!120 &120734066699541570
