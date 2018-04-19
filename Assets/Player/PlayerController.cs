@@ -15,6 +15,7 @@ public class PlayerController : Controller {
 	public float InputMagnitudeToMove;
 	public MinMaxFloat SlopeAngles;
 	public float MaxWallAngleDelta;
+    public float RespawnTimer;
 
 
 	void Start() {
