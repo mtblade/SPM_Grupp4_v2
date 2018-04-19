@@ -23,6 +23,10 @@ public class GroundState : State
     public float grapplingRange;
     public LayerMask grappleLayer;
     private RaycastHit2D[] hitDetect;
+    float dist;
+    float shortestDist = 0;
+
+
 
     private Vector2 _groundNormal;
 
@@ -48,19 +52,47 @@ public class GroundState : State
     public override void Update()
     {
 
-        hitDetect = null;
+       
+
         if (Input.GetButtonDown("Grappling")) {
 
-           
 
             hitDetect = Physics2D.CircleCastAll(transform.position, grapplingRange, Vector2.zero, 0f, grappleLayer);
-            Debug.Log("hit detect lengt" + hitDetect.Length);
-            if (hitDetect != null) {
+            Debug.Log("Array hitDetect length  = " + hitDetect.Length);
 
-                Debug.Log("hit detect lengt" + hitDetect.Length);
-                //Debug.Log("Nearast hookPoint = " + hitDetect[0].collider.name);
-                _controller.TransitionTo<GrappleState>(hitDetect[0]);
-            }      
+
+       
+            if (hitDetect.Length > 0)
+            {
+                float dist = Vector3.Distance(hitDetect[0].transform.position, transform.position);
+
+                for (int i = 0; i < hitDetect.Length - 1; i++)
+                {
+                   
+
+                    float dist2 = Vector3.Distance(hitDetect[i].transform.position, transform.position);
+
+                    Debug.Log(dist + " " + dist2);
+
+                    if (dist2 > dist)
+                    {
+                        Debug.Log("HE");
+                        dist = dist2;
+                        hitDetect[0] = hitDetect[i];
+                    }
+
+
+                }
+                Debug.Log("Nearast hookPoint = " + hitDetect[0].collider.name);
+                //_controller.TransitionTo<GrappleState>(hitDetect[0]);
+
+            }
+
+
+
+
+
+
         }
 
         UpdateGravity();
