@@ -6,6 +6,7 @@ public class StaticCameraZone : MonoBehaviour {
 
     private Vector3 CameraPosition;
     public CameraBehaviour Camera;
+    private bool _static = false;
 
     private void Awake()
     {
@@ -15,15 +16,28 @@ public class StaticCameraZone : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {    
         if (other.gameObject.CompareTag("Player")){
-            Debug.Log(this.gameObject.name + ": " + CameraPosition);
+            Debug.Log("Entered StaticCameraZone!");
             Camera.StaticCameraControl(CameraPosition);
+            _static = true;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && !_static) {
+            Debug.Log("Entered StaticCameraZone!");
+            Camera.StaticCameraControl(CameraPosition);
+            _static = true;
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("Left StaticCameraZone!");
             Camera.StaticCameraControl(CameraPosition);
+            _static = false;
         }
     }
 }
