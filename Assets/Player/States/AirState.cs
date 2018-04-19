@@ -16,7 +16,12 @@ public class AirState : State {
 	public float Acceleration;
 	public float Friction;
 
-	private Transform transform { get { return _controller.transform; } }
+    [Header("Grappling")]
+    public float grapplingRange;
+    public LayerMask grappleLayer;
+    private RaycastHit2D[] hitDetect;
+
+    private Transform transform { get { return _controller.transform; } }
 
 	private Vector2 Velocity { get { return _controller.Velocity; } set { _controller.Velocity = value; } }
 
@@ -27,7 +32,20 @@ public class AirState : State {
 	}
 
 	public override void Update() {
-		_controller.GetState<GroundState>().UpdateJump();
+
+        if (Input.GetButtonDown("Grappling"))
+        {
+
+            hitDetect = Physics2D.CircleCastAll(transform.position, grapplingRange, Vector2.zero, 0f, grappleLayer);
+
+            if (hitDetect != null)
+            {
+                //Debug.Log("Nearast hookPoint = " + hitDetect[0].collider.name);
+                _controller.TransitionTo<GrappleState>(hitDetect[0]);
+            }
+        }
+
+        _controller.GetState<GroundState>().UpdateJump();
 		UpdateGravity();
 		RaycastHit2D[] hits = _controller.DetectHits();
 		UpdateMovement();

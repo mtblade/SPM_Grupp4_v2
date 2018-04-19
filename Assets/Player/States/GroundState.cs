@@ -48,17 +48,19 @@ public class GroundState : State
     public override void Update()
     {
 
-
-
+        hitDetect = null;
         if (Input.GetButtonDown("Grappling")) {
 
+           
+
             hitDetect = Physics2D.CircleCastAll(transform.position, grapplingRange, Vector2.zero, 0f, grappleLayer);
-            Debug.Log(hitDetect.Length);
+            Debug.Log("hit detect lengt" + hitDetect.Length);
             if (hitDetect != null) {
-                for (int i = 0; i < hitDetect.Length; i++)
-                    Debug.Log(hitDetect[i].collider.name);
-            }
-            _controller.TransitionTo<GrappleState>();
+
+                Debug.Log("hit detect lengt" + hitDetect.Length);
+                //Debug.Log("Nearast hookPoint = " + hitDetect[0].collider.name);
+                _controller.TransitionTo<GrappleState>(hitDetect[0]);
+            }      
         }
 
         UpdateGravity();

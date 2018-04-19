@@ -35,7 +35,15 @@ public abstract class Controller : MonoBehaviour {
 
 	}
 
-	private void Update() {
+    public void TransitionTo<T>(RaycastHit2D hit)
+    {
+        CurrentState.Exit();
+        CurrentState = GetState<T>() as State;
+        CurrentState.Enter(hit);
+
+    }
+
+    private void Update() {
 		CurrentState.Update();
 	}
 

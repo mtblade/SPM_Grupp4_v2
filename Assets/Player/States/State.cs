@@ -12,6 +12,11 @@ public class State : ScriptableObject {
 		
 	}
 
+    public virtual void Enter(RaycastHit2D hit)
+    {
+
+    }
+
 	public virtual void Update () {
 		
 	}
