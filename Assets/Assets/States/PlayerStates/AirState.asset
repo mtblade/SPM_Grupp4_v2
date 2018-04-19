@@ -15,7 +15,11 @@ MonoBehaviour:
   FastFallingModifier: 2
   Acceleration: 75
   Friction: 5
+<<<<<<< HEAD
+  grapplingRange: 20
+=======
   grapplingRange: 10
+>>>>>>> 21f891c0be30fd65e90037cb6ced3bc05cd867c9
   grappleLayer:
     serializedVersion: 2
     m_Bits: 0

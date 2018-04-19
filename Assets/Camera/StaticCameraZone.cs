@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraZone : MonoBehaviour {
+public class StaticCameraZone : MonoBehaviour {
 
-    public Vector3 CameraPosition;
+    private Vector3 CameraPosition;
     public CameraBehaviour Camera;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void Awake()
     {
-        Debug.Log("Collision");
+        CameraPosition = (Vector3)this.gameObject.transform.GetChild(0).position;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {    
         if (other.gameObject.CompareTag("Player")){
+            Debug.Log(this.gameObject.name + ": " + CameraPosition);
             Camera.StaticCameraControl(CameraPosition);
         }
     }
