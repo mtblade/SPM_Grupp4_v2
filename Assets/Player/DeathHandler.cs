@@ -56,7 +56,7 @@ public class DeathHandler : MonoBehaviour
             Player.gameObject.GetComponent<MeshRenderer>().enabled = true;
             Player.gameObject.GetComponent<PlayerController>().enabled = true;
             transform.position = RespawnPosition;
-            Camera.StaticCameraControl(Vector3.zero);
+            Camera.StaticCameraControl();
             counter = 0;
             lingerTimer = 0;
             cameraTimer = 0;
@@ -72,6 +72,8 @@ public class DeathHandler : MonoBehaviour
         Player.gameObject.GetComponent<PlayerController>().enabled = false;
         dead = true;
         nextRespawn = counter + RespawnTimer;
+        if (Camera._isStatic)
+            Camera.StaticCameraControl();
         Camera.ZoomControl(DeathZoom);
     }
 

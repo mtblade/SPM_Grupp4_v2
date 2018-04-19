@@ -18,7 +18,7 @@ public class CameraBehaviour : MonoBehaviour
     public float LookAheadAccelerationTime;
     private float _lookAhead;
 
-    private bool _isStatic;
+    public bool _isStatic;
     private Vector3 _staticPosition;
 
 
@@ -35,7 +35,14 @@ public class CameraBehaviour : MonoBehaviour
     public void StaticCameraControl(Vector3 pos)
     {
         _isStatic = !_isStatic;
+        Debug.Log("StaticCamera: " + _isStatic);
         _staticPosition = pos;
+    }
+
+    public void StaticCameraControl()
+    {
+        _isStatic = !_isStatic;
+        Debug.Log("StaticCamera: " + _isStatic);
     }
 
     public void ZoomControl(float distance)
