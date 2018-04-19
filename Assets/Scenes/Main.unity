@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 601978544}
   - component: {fileID: 601978546}
   - component: {fileID: 601978545}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RopeHingeAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 601978543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 634048588}
   m_RootOrder: 1
@@ -421,6 +421,8 @@ GameObject:
   - component: {fileID: 634048589}
   - component: {fileID: 634048586}
   - component: {fileID: 634048590}
+  - component: {fileID: 634048592}
+  - component: {fileID: 634048591}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -551,6 +553,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Range: 10
   state: {fileID: 11400000, guid: 355d49fa4b6c3884880dab84af5a660c, type: 2}
+--- !u!232 &634048591
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 634048584}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 601978545}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.005
+  m_MaxDistanceOnly: 0
+--- !u!50 &634048592
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 634048584}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &675725994
 GameObject:
   m_ObjectHideFlags: 0
