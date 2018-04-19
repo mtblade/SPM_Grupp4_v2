@@ -40,7 +40,6 @@ public class AirState : State {
 
             if (hitDetect != null)
             {
-                //Debug.Log("Nearast hookPoint = " + hitDetect[0].collider.name);
                 _controller.TransitionTo<GrappleState>(hitDetect[0]);
             }
         }

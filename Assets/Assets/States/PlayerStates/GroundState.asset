@@ -23,7 +23,7 @@ MonoBehaviour:
   TimeToApexJump: 0.5
   InitialJumpDistance: 0.05
   MaxJumps: 2
-  grapplingRange: 20
+  grapplingRange: 10
   grappleLayer:
     serializedVersion: 2
     m_Bits: 512
