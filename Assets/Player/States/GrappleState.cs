@@ -74,7 +74,7 @@ public class GrappleState : State {
 
 
             //spelarens rigidbody får en force i y led uppåt, som ett litet hopp i luften innan grapplingens hook skjuts ut och fastnar
-            _controller.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 4f), ForceMode2D.Impulse);
+            //_controller.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 4f), ForceMode2D.Impulse);
 
             //ropePositions är en lista med vektor2 från hookpointens position
             ropePositions.Add(_hitDetect.point);
@@ -104,7 +104,6 @@ public class GrappleState : State {
         if (Input.GetButtonDown("Grappling"))
         {
             disableGrappling();
-
             _controller.TransitionTo<AirState>();
         }
 
@@ -120,14 +119,12 @@ public class GrappleState : State {
             if (MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
             {
                 Debug.Log("GROUND");
-                _controller.TransitionTo<GroundState>();
                 disableGrappling();
+                _controller.TransitionTo<GroundState>();          
             }
-
         }
 
         UpdateRopePositions();
-
     }
 
     private void disableGrappling()

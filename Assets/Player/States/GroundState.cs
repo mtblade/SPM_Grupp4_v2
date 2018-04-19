@@ -51,44 +51,45 @@ public class GroundState : State
     {
 
 
-        if (Input.GetButtonDown("Grappling"))
-        {
-
-            hitDetect = Physics2D.CircleCastAll(transform.position, grapplingRange, Vector2.zero, 0f, grappleLayer);
-
-            if (hitDetect != null)
-            {
-                _controller.TransitionTo<GrappleState>(hitDetect[0]);
-            }
-        }
-
-
-
         //if (Input.GetButtonDown("Grappling"))
         //{
 
         //    hitDetect = Physics2D.CircleCastAll(transform.position, grapplingRange, Vector2.zero, 0f, grappleLayer);
-        //    float distIndex0 = Vector3.Distance(hitDetect[0].transform.position, transform.position);
 
-        //    if (hitDetect.Length > 0)
+        //    if (hitDetect != null)
         //    {
-        //        //Koden nedan mäter avståndet mellan spelaren och varje hookpoint som ligger i hitDetect arrayen. 
-        //        //Det kortaste avståndet mellan spelaren och alla objekt i arrayen sparas på plats/index 0 i hitDetect. 
-        //        //Således kommer den närmsta hookpionten alltid att finnas i hitDetect[0]
-        //        for (int i = 1; i <= hitDetect.Length-1; i++)
-        //        {    
-        //            float distIndexI = Vector3.Distance(hitDetect[i].transform.position, transform.position);
-
-        //            if (distIndexI < distIndex0)
-        //            {
-        //                distIndex0 = distIndexI;
-        //                hitDetect[0] = hitDetect[i];
-        //            }
-        //        }
-        //        Debug.Log("Nearast hookPoint = " + hitDetect[0].collider.name);
         //        _controller.TransitionTo<GrappleState>(hitDetect[0]);
         //    }
         //}
+
+
+
+        if (Input.GetButtonDown("Grappling"))
+        {
+
+            hitDetect = Physics2D.CircleCastAll(transform.position, grapplingRange, Vector2.zero, 0f, grappleLayer);
+            float distIndex0 = Vector3.Distance(hitDetect[0].transform.position, transform.position);
+
+            if (hitDetect.Length > 0)
+            {
+                //Koden nedan mäter avståndet mellan spelaren och varje hookpoint som ligger i hitDetect arrayen. 
+                //Det kortaste avståndet mellan spelaren och alla objekt i arrayen sparas på plats/index 0 i hitDetect. 
+                //Således kommer den närmsta hookpionten alltid att finnas i hitDetect[0]
+                for (int i = 1; i <= hitDetect.Length - 1; i++)
+                {
+                    float distIndexI = Vector3.Distance(hitDetect[i].transform.position, transform.position);
+
+                    if (distIndexI < distIndex0)
+                    {
+                        distIndex0 = distIndexI;
+                        hitDetect[0] = hitDetect[i];
+                    }
+                }
+                Debug.Log("Nearast hookPoint = " + hitDetect[0].collider.name);
+                _controller.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 4f), ForceMode2D.Impulse);
+                _controller.TransitionTo<GrappleState>(hitDetect[0]);
+            }
+        }
 
         UpdateGravity();
         RaycastHit2D[] hits = _controller.DetectHits(true);
